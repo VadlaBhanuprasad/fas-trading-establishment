@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Mail, Phone, MapPin, ArrowRight, Building2, MessageCircle } from 'lucide-react';
+import { Mail, Phone, ArrowRight, Building2, MessageCircle } from 'lucide-react';
 import { ContactForm } from './ContactForm';
 
 export function CallToAction() {
