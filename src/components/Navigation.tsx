@@ -33,11 +33,11 @@ export function Navigation() {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <Building2 className={`w-8 h-8 transition-colors ${isScrolled ? 'text-emerald-600' : 'text-white'}`} />
-            <div>
-              <h1 className={`text-xl font-bold transition-colors ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
+            <div className="min-w-0">
+              <h1 className={`text-lg sm:text-xl font-bold transition-colors ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
                 FAS Trading & Establishment
               </h1>
-              <p className={`text-xs transition-colors ${isScrolled ? 'text-slate-600' : 'text-emerald-100'}`}>
+              <p className={`text-xs transition-colors ${isScrolled ? 'text-slate-600' : 'text-emerald-100'} hidden sm:block`}>
                 Industrial Excellence Since 2010
               </p>
             </div>
