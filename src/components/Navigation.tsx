@@ -32,7 +32,11 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <Building2 className={`w-8 h-8 transition-colors ${isScrolled ? 'text-emerald-600' : 'text-white'}`} />
+            <img 
+              src="/app-logo.png" 
+              alt="FAS Trading & Establishment Logo" 
+              className="w-10 h-10 object-contain"
+            />
             <div className="min-w-0">
               <h1 className={`text-lg sm:text-xl font-bold transition-colors ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
                 FAS Trading & Establishment
