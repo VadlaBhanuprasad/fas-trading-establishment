@@ -54,18 +54,36 @@ export function ExecutiveSummary() {
               <img
                 src="https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Industrial Excellence"
-                className="rounded-2xl shadow-2xl w-full"
+                className="rounded-2xl shadow-2xl w-full object-cover"
               />
-              <div className="absolute -bottom-6 -right-6 bg-emerald-600 text-white p-6 rounded-xl shadow-xl">
+
+              <div className="
+                absolute
+                -bottom-4 -right-4
+                sm:-bottom-6 sm:-right-6
+                mr-2.5
+                bg-emerald-600
+                text-white
+                p-4 sm:p-6
+                rounded-xl
+                shadow-xl
+              ">
                 <div className="flex items-center space-x-3">
-                  <MapPin className="w-8 h-8" />
+                  <MapPin className="w-4 h-4 sm:w-8 sm:h-8" />
+
                   <div>
-                    <div className="font-bold text-lg">Al Jubail</div>
-                    <div className="text-sm text-emerald-100">Strategic Location</div>
+                    <div className="font-bold text-base sm:text-lg">
+                      Al Jubail
+                    </div>
+                    <div className="text-xs sm:text-sm text-emerald-100">
+                      Strategic Location
+                    </div>
                   </div>
                 </div>
               </div>
+
             </div>
+
           </div>
 
           <div
