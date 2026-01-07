@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, User, Mail, Phone, MessageSquare } from 'lucide-react';
+import { Send, User, Mail, Phone, MessageSquare, CheckCircle, AlertCircle } from 'lucide-react';
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -9,23 +9,43 @@ export function ContactForm() {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Create mailto link with form data
-    const subject = encodeURIComponent('New Business Inquiry - FAS Trading & Establishment');
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    const mailtoLink = `mailto:info@fas-tradingest.com?subject=${subject}&body=${body}`;
-    
-    window.location.href = mailtoLink;
-    
-    // Reset form
-    setFormData({ name: '', phone: '', email: '', message: '' });
-    setIsSubmitting(false);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('http://localhost:3001/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setStatusMessage('Message sent successfully! We\'ll get back to you soon.');
+        setFormData({ name: '', phone: '', email: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+        setStatusMessage(data.message || 'Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      setStatusMessage('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setSubmitStatus('idle');
+        setStatusMessage('');
+      }, 5000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -100,6 +120,29 @@ export function ContactForm() {
           <Send className="w-5 h-5" />
           <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
         </button>
+
+        {submitStatus !== 'idle' && (
+          <div
+            className={`flex items-center space-x-2 p-4 rounded-lg ${
+              submitStatus === 'success'
+                ? 'bg-emerald-500/20 border border-emerald-400/30'
+                : 'bg-red-500/20 border border-red-400/30'
+            }`}
+          >
+            {submitStatus === 'success' ? (
+              <CheckCircle className="w-5 h-5 text-emerald-300 flex-shrink-0" />
+            ) : (
+              <AlertCircle className="w-5 h-5 text-red-300 flex-shrink-0" />
+            )}
+            <span
+              className={`text-sm ${
+                submitStatus === 'success' ? 'text-emerald-200' : 'text-red-200'
+              }`}
+            >
+              {statusMessage}
+            </span>
+          </div>
+        )}
       </form>
     </div>
   );
