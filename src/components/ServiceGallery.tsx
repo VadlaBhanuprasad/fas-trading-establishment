@@ -164,26 +164,26 @@ export function ServiceGallery() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`text-center mb-16 transform transition-all duration-1000 ${
+          className={`text-center mb-12 sm:mb-16 transform transition-all duration-1000 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <div className="inline-block mb-4">
-            <span className="text-emerald-600 font-semibold text-sm uppercase tracking-wider">Showcase</span>
+          <div className="inline-block mb-3 sm:mb-4">
+            <span className="text-emerald-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Showcase</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl sm:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">
             Service Gallery &
             <span className="block text-emerald-600">Project Highlights</span>
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto mb-8">
+          <p className="text-sm sm:text-lg text-slate-600 max-w-3xl mx-auto mb-6 sm:mb-8 px-2">
             Explore our portfolio of successful projects demonstrating our expertise across manpower supply,
             equipment rental, and integrated contracting services.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-600 to-teal-500 mx-auto"></div>
+          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-emerald-600 to-teal-500 mx-auto"></div>
         </div>
 
         <div
-          className={`flex flex-wrap justify-center gap-3 mb-12 transform transition-all duration-1000 delay-200 ${
+          className={`flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 sm:mb-12 transform transition-all duration-1000 delay-200 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
@@ -191,7 +191,7 @@ export function ServiceGallery() {
             <button
               key={category}
               onClick={() => setFilter(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+              className={`px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm rounded-full font-medium transition-all duration-300 ${
                 filter === category
                   ? 'bg-emerald-600 text-white shadow-lg'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
@@ -203,7 +203,7 @@ export function ServiceGallery() {
         </div>
 
         <div
-          className={`grid sm:grid-cols-2 lg:grid-cols-4 gap-6 transform transition-all duration-1000 delay-300 ${
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 transform transition-all duration-1000 delay-300 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
@@ -218,16 +218,16 @@ export function ServiceGallery() {
               }}
               onClick={() => setSelectedImage(image)}
             >
-              <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 h-64">
+              <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 h-48 sm:h-64">
                 <img
                   src={image.url}
                   alt={image.alt}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-1">{image.title}</h3>
-                    <p className="text-emerald-300 text-sm">{image.category}</p>
+                    <h3 className="text-base sm:text-xl font-bold text-white mb-1">{image.title}</h3>
+                    <p className="text-emerald-300 text-xs sm:text-sm">{image.category}</p>
                   </div>
                 </div>
               </div>
@@ -242,24 +242,24 @@ export function ServiceGallery() {
           onClick={() => setSelectedImage(null)}
         >
           <div
-            className="relative max-w-4xl w-full transform scale-95 animate-zoomIn"
+            className="relative max-w-4xl w-full transform scale-95 animate-zoomIn max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 text-white hover:text-emerald-400 transition-colors duration-300"
+              className="absolute -top-10 right-0 text-white hover:text-emerald-400 transition-colors duration-300 z-10"
             >
-              <X className="w-8 h-8" />
+              <X className="w-6 sm:w-8 h-6 sm:h-8" />
             </button>
             <img
               src={selectedImage.url}
               alt={selectedImage.alt}
               className="w-full h-auto rounded-2xl shadow-2xl"
             />
-            <div className="mt-6 bg-white rounded-xl p-6 shadow-xl">
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">{selectedImage.title}</h3>
-              <p className="text-emerald-600 font-semibold mb-3">{selectedImage.category}</p>
-              <p className="text-slate-600">{selectedImage.alt}</p>
+            <div className="mt-4 sm:mt-6 bg-white rounded-xl p-4 sm:p-6 shadow-xl">
+              <h3 className="text-lg sm:text-2xl font-bold text-slate-900 mb-2">{selectedImage.title}</h3>
+              <p className="text-emerald-600 font-semibold mb-2 sm:mb-3 text-sm sm:text-base">{selectedImage.category}</p>
+              <p className="text-slate-600 text-sm sm:text-base">{selectedImage.alt}</p>
             </div>
           </div>
         </div>

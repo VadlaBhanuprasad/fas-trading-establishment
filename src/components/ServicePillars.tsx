@@ -78,25 +78,25 @@ export function ServicePillars() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`text-center mb-16 transform transition-all duration-1000 ${
+          className={`text-center mb-12 sm:mb-16 transform transition-all duration-1000 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <div className="inline-block mb-4">
-            <span className="text-emerald-600 font-semibold text-sm uppercase tracking-wider">Service Excellence</span>
+          <div className="inline-block mb-3 sm:mb-4">
+            <span className="text-emerald-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Service Excellence</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl sm:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">
             The Three Pillars of
             <span className="block text-emerald-600">Industrial Excellence</span>
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-lg text-slate-600 max-w-3xl mx-auto px-2">
             Our integrated service model delivers comprehensive solutions across every aspect of industrial operations,
             ensuring seamless project execution from start to finish.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-600 to-teal-500 mx-auto mt-6"></div>
+          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-emerald-600 to-teal-500 mx-auto mt-5 sm:mt-6"></div>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           {pillars.map((pillar, index) => (
             <div
               key={index}
@@ -106,32 +106,32 @@ export function ServicePillars() {
             >
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
                 <div className="grid md:grid-cols-2 gap-0">
-                  <div className={`bg-gradient-to-br ${pillar.gradient} p-8 sm:p-12 text-white flex flex-col justify-center`}>
-                    <div className="mb-6">
-                      <pillar.icon className="w-16 h-16 mb-4 opacity-90" />
-                      <h3 className="text-3xl font-bold mb-2">{pillar.title}</h3>
-                      <p className="text-lg opacity-90 font-medium">{pillar.subtitle}</p>
+                  <div className={`bg-gradient-to-br ${pillar.gradient} p-6 sm:p-8 md:p-12 text-white flex flex-col justify-center`}>
+                    <div className="mb-4 sm:mb-6">
+                      <pillar.icon className="w-12 sm:w-16 h-12 sm:h-16 mb-3 sm:mb-4 opacity-90" />
+                      <h3 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">{pillar.title}</h3>
+                      <p className="text-base sm:text-lg opacity-90 font-medium">{pillar.subtitle}</p>
                     </div>
-                    <p className="text-white/90 leading-relaxed text-lg">
+                    <p className="text-white/90 leading-relaxed text-sm sm:text-lg">
                       {pillar.description}
                     </p>
                   </div>
 
-                  <div className="p-8 sm:p-12">
-                    <h4 className="text-xl font-bold text-slate-900 mb-6 flex items-center">
-                      <span className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-600" />
+                  <div className="p-6 sm:p-8 md:p-12">
+                    <h4 className="text-lg sm:text-xl font-bold text-slate-900 mb-4 sm:mb-6 flex items-center">
+                      <span className="w-6 sm:w-8 h-6 sm:h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-2 sm:mr-3">
+                        <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-emerald-600" />
                       </span>
                       Key Capabilities
                     </h4>
-                    <ul className="space-y-4">
+                    <ul className="space-y-3 sm:space-y-4">
                       {pillar.features.map((feature, featureIndex) => (
                         <li
                           key={featureIndex}
                           className="flex items-start space-x-3 group"
                         >
                           <div className="flex-shrink-0 w-2 h-2 bg-emerald-600 rounded-full mt-2 group-hover:scale-150 transition-transform duration-300"></div>
-                          <span className="text-slate-700 leading-relaxed group-hover:text-emerald-600 transition-colors duration-300">
+                          <span className="text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed group-hover:text-emerald-600 transition-colors duration-300">
                             {feature}
                           </span>
                         </li>
@@ -145,25 +145,25 @@ export function ServicePillars() {
         </div>
 
         <div
-          className={`mt-16 bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-900 rounded-2xl p-8 sm:p-12 text-center shadow-2xl transform transition-all duration-1000 delay-600 ${
+          className={`mt-12 sm:mt-16 bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-900 rounded-2xl p-6 sm:p-8 md:p-12 text-center shadow-2xl transform transition-all duration-1000 delay-600 ${
             isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
           }`}
         >
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+          <h3 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">
             Trusted by Industry Leaders
           </h3>
-          <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">
+          <p className="text-sm sm:text-lg text-slate-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-2">
             Our proven expertise has made us the preferred partner for Aramco, SABIC, and other major industrial corporations
             throughout Saudi Arabia. When precision, safety, and reliability matter most, industry leaders choose FAS Trading & Establishment.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <span className="px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            <span className="px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium text-xs sm:text-sm">
               Saudi Aramco Projects
             </span>
-            <span className="px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium">
+            <span className="px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium text-xs sm:text-sm">
               SABIC Facilities
             </span>
-            <span className="px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium">
+            <span className="px-4 sm:px-6 py-2 sm:py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium text-xs sm:text-sm">
               Industrial Complexes
             </span>
           </div>

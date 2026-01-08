@@ -56,12 +56,12 @@ export function ContactForm() {
   };
 
   return (
-    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 sm:p-8">
-      <h3 className="text-2xl font-bold text-white mb-6">Send Us a Message</h3>
-      
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 sm:p-8">
+      <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Send Us a Message</h3>
+
+      <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
         <div className="relative">
-          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-emerald-300" />
+          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-emerald-300" />
           <input
             type="text"
             name="name"
@@ -69,12 +69,12 @@ export function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-emerald-200 focus:outline-none focus:border-emerald-400 transition-colors"
+            className="w-full pl-10 sm:pl-12 pr-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-emerald-200 focus:outline-none focus:border-emerald-400 transition-colors text-sm sm:text-base"
           />
         </div>
 
         <div className="relative">
-          <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-emerald-300" />
+          <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-emerald-300" />
           <input
             type="tel"
             name="phone"
@@ -82,12 +82,12 @@ export function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
             required
-            className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-emerald-200 focus:outline-none focus:border-emerald-400 transition-colors"
+            className="w-full pl-10 sm:pl-12 pr-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-emerald-200 focus:outline-none focus:border-emerald-400 transition-colors text-sm sm:text-base"
           />
         </div>
 
         <div className="relative">
-          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-emerald-300" />
+          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-emerald-300" />
           <input
             type="email"
             name="email"
@@ -95,47 +95,47 @@ export function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-emerald-200 focus:outline-none focus:border-emerald-400 transition-colors"
+            className="w-full pl-10 sm:pl-12 pr-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-emerald-200 focus:outline-none focus:border-emerald-400 transition-colors text-sm sm:text-base"
           />
         </div>
 
         <div className="relative">
-          <MessageSquare className="absolute left-3 top-4 w-5 h-5 text-emerald-300" />
+          <MessageSquare className="absolute left-3 top-4 w-4 sm:w-5 h-4 sm:h-5 text-emerald-300" />
           <textarea
             name="message"
             placeholder="Your Message"
             value={formData.message}
             onChange={handleChange}
             required
-            rows={4}
-            className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-emerald-200 focus:outline-none focus:border-emerald-400 transition-colors resize-none"
+            rows={3}
+            className="w-full pl-10 sm:pl-12 pr-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-emerald-200 focus:outline-none focus:border-emerald-400 transition-colors resize-none text-sm sm:text-base"
           />
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center space-x-2"
+          className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-semibold py-2.5 sm:py-3 px-6 rounded-lg transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base"
         >
-          <Send className="w-5 h-5" />
+          <Send className="w-4 sm:w-5 h-4 sm:h-5" />
           <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
         </button>
 
         {submitStatus !== 'idle' && (
           <div
-            className={`flex items-center space-x-2 p-4 rounded-lg ${
+            className={`flex items-center space-x-2 p-3 sm:p-4 rounded-lg text-xs sm:text-sm ${
               submitStatus === 'success'
                 ? 'bg-emerald-500/20 border border-emerald-400/30'
                 : 'bg-red-500/20 border border-red-400/30'
             }`}
           >
             {submitStatus === 'success' ? (
-              <CheckCircle className="w-5 h-5 text-emerald-300 flex-shrink-0" />
+              <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-emerald-300 flex-shrink-0" />
             ) : (
-              <AlertCircle className="w-5 h-5 text-red-300 flex-shrink-0" />
+              <AlertCircle className="w-4 sm:w-5 h-4 sm:h-5 text-red-300 flex-shrink-0" />
             )}
             <span
-              className={`text-sm ${
+              className={`${
                 submitStatus === 'success' ? 'text-emerald-200' : 'text-red-200'
               }`}
             >

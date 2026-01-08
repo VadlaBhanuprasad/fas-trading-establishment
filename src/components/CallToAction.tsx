@@ -44,7 +44,7 @@ export function CallToAction() {
               </div>
 
               {/* Contact Info - Second on mobile */}
-              <div className="order-2 lg:order-1 p-4 sm:p-6 lg:p-12 flex flex-col justify-center">
+              <div className="order-2 lg:order-1 p-5 sm:p-6 lg:p-12 flex flex-col justify-center">
                 <div className="inline-block mb-4 lg:mb-6">
                   <span className="px-3 py-1 lg:px-4 lg:py-2 bg-emerald-600/20 backdrop-blur-sm border border-emerald-400/30 rounded-full text-emerald-300 text-xs lg:text-sm font-medium">
                     Partner With Excellence
@@ -114,12 +114,12 @@ export function CallToAction() {
               </div>
 
               {/* Why Choose Us - Third on mobile */}
-              <div className="order-3 lg:order-3 p-4 sm:p-6 lg:p-12 bg-gradient-to-br from-emerald-600 to-teal-600 relative">
+              <div className="order-3 lg:order-3 p-5 sm:p-6 lg:p-12 bg-gradient-to-br from-emerald-600 to-teal-600 relative">
                 <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&cs=tinysrgb&w=800')] bg-cover bg-center opacity-10"></div>
-                
+
                 <div className="relative z-10 text-center">
-                  <Building2 className="w-12 h-12 lg:w-20 lg:h-20 text-white/90 mx-auto mb-4 lg:mb-6" />
-                  <h3 className="text-lg lg:text-2xl font-bold text-white mb-4">
+                  <Building2 className="w-10 sm:w-12 lg:w-20 h-10 sm:h-12 lg:h-20 text-white/90 mx-auto mb-3 sm:mb-4 lg:mb-6" />
+                  <h3 className="text-base sm:text-lg lg:text-2xl font-bold text-white mb-3 sm:mb-4">
                     Why Choose FAS?
                   </h3>
                   <div className="space-y-2 lg:space-y-3 text-left max-w-xs mx-auto">
@@ -131,7 +131,7 @@ export function CallToAction() {
                     ].map((item, index) => (
                       <div key={index} className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-white rounded-full flex-shrink-0"></div>
-                        <span className="text-white/90 text-xs lg:text-sm">{item}</span>
+                        <span className="text-white/90 text-xs sm:text-sm">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -142,15 +142,15 @@ export function CallToAction() {
         </div>
 
         <div
-          className={`mt-8 lg:mt-12 text-center transform transition-all duration-1000 delay-300 ${
+          className={`mt-6 sm:mt-8 lg:mt-12 text-center transform transition-all duration-1000 delay-300 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
           <div className="flex items-center justify-center space-x-2 lg:space-x-3 mb-2 lg:mb-4">
-            <Building2 className="w-5 h-5 lg:w-6 lg:h-6 text-emerald-600" />
-            <span className="text-lg lg:text-2xl font-bold text-slate-900">FAS Trading & Establishment</span>
+            <Building2 className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 text-emerald-600" />
+            <span className="text-base sm:text-lg lg:text-2xl font-bold text-slate-900">FAS Trading & Establishment</span>
           </div>
-          <p className="text-slate-600 text-sm lg:text-base mb-1 lg:mb-2">Industrial Excellence Since 2010</p>
+          <p className="text-slate-600 text-xs sm:text-sm lg:text-base mb-1 lg:mb-2">Industrial Excellence Since 2010</p>
           <p className="text-xs lg:text-sm text-slate-500">Building the Kingdom's Future, One Project at a Time</p>
         </div>
       </div>
