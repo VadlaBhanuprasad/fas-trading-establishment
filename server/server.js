@@ -11,6 +11,13 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+console.log('Environment variables loaded:');
+console.log('- PORT:', PORT);
+console.log('- EMAIL_SERVICE:', process.env.EMAIL_SERVICE || 'gmail');
+console.log('- EMAIL_USER:', process.env.EMAIL_USER ? '***configured***' : 'NOT SET');
+console.log('- EMAIL_PASSWORD:', process.env.EMAIL_PASSWORD ? '***configured***' : 'NOT SET');
+console.log('- RECIPIENT_EMAIL:', process.env.RECIPIENT_EMAIL || 'info@fas-tradingest.com');
+
 const transporter = nodemailer.createTransport({
   service: process.env.EMAIL_SERVICE || 'gmail',
   auth: {
@@ -20,9 +27,12 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/api/send-email', async (req, res) => {
+  console.log('Email request received:', { name: req.body.name, email: req.body.email });
+
   const { name, phone, email, message } = req.body;
 
   if (!name || !phone || !email || !message) {
+    console.log('Validation failed - missing fields');
     return res.status(400).json({
       success: false,
       message: 'All fields are required'
@@ -85,16 +95,22 @@ Please respond directly to: ${email}
   };
 
   try {
-    await transporter.sendMail(mailOptions);
+    console.log('Attempting to send email to:', process.env.RECIPIENT_EMAIL || 'info@fas-tradingest.com');
+    const result = await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully:', result.response);
     res.status(200).json({
       success: true,
       message: 'Email sent successfully'
     });
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Error sending email:', {
+      message: error.message,
+      code: error.code,
+      command: error.command
+    });
     res.status(500).json({
       success: false,
-      message: 'Failed to send email. Please try again later.'
+      message: error.message || 'Failed to send email. Please try again later.'
     });
   }
 });
