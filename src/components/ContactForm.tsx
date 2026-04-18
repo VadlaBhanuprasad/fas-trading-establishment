@@ -35,35 +35,33 @@ export function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      // const response = await emailjs.send(
-      //   import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      //   import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      //   {
-      //     name: formData.name,
-      //     email: formData.email,
-      //     phone: formData.phone,
-      //     subject: formData.subject,
-      //     message: formData.message,
-      //     time: new Date().toLocaleString(),
-      //   },
-      //   import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      // );
-
-      // console.log('EmailJS Response:', response);
-
-      setSubmitStatus('success');
-      setStatusMessage("Message sent successfully! We'll get back to you soon.");
-      setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        subject: '',
-        message: '',
+      const response = await fetch('http://localhost:3001/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    } catch (error) {
-      console.error('EmailJS Error:', error);
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus('success');
+        setStatusMessage("Message sent successfully! We'll get back to you soon.");
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        throw new Error(data.message || 'Failed to send message');
+      }
+    } catch (error: any) {
+      console.error('Submission Error:', error);
       setSubmitStatus('error');
-      setStatusMessage('Failed to send message. Please try again.');
+      setStatusMessage(error.message || 'Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
       setTimeout(() => {
@@ -172,11 +170,10 @@ export function ContactForm() {
         {/* Status */}
         {submitStatus !== 'idle' && (
           <div
-            className={`flex items-center space-x-2 p-3 sm:p-4 rounded-lg ${
-              submitStatus === 'success'
+            className={`flex items-center space-x-2 p-3 sm:p-4 rounded-lg ${submitStatus === 'success'
                 ? 'bg-emerald-500/20 border border-emerald-400/30'
                 : 'bg-red-500/20 border border-red-400/30'
-            }`}
+              }`}
           >
             {submitStatus === 'success' ? (
               <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-emerald-300" />
